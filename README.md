@@ -1,1 +1,1 @@
-O chatbot responde a perguntas sobre procedimentos de onboarding baseadas no manual institucional.
+O problema abordado foi a criação de um chatbot informativo para auxiliar novos estudantes, investigadores e colaboradores do Instituto de Investigação em Ciências da Vida e da Saúde (ICVS) durante o processo de onboarding. O chatbot deve responder a perguntas sobre procedimentos administrativos, estruturas internas, normas e recursos disponíveis, baseando-se exclusivamente no manual institucional para garantir precisão e confiabilidade.
