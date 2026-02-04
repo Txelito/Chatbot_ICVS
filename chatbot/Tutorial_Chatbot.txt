@@ -1,0 +1,52 @@
+Tutorial: Como Executar o Chatbot de Apoio Institucional ICVS
+
+Este tutorial explica passo a passo como configurar e executar o chatbot RAG (Retrieval-Augmented Generation) para o ICVS. O chatbot responde a perguntas sobre procedimentos de onboarding baseadas no manual institucional.
+
+Pré-requisitos:
+- Python 3.8 ou superior instalado no sistema.
+- Ollama instalado (ferramenta para executar modelos de linguagem localmente). Pode ser descarregado de https://ollama.ai/.
+- Bibliotecas Python necessárias: ollama, pandas, scikit-learn, nltk, spaCy. Instale-as com pip install ollama pandas scikit-learn nltk spacy.
+
+Passo 1: Instalar e Configurar o Ollama
+1. Descarregue e instale o Ollama a partir do site oficial.
+2. Abra um terminal e execute o comando para descarregar o modelo necessário:
+   ollama pull llama3.2:3b
+   Este modelo é leve e adequado para o projeto. Aguarde o download (pode demorar alguns minutos).
+
+Passo 2: Preparar o Dataset
+- O dataset principal é o ficheiro "icvs_dataset.csv" localizado na pasta "etapa_i".
+- Este ficheiro contém os dados processados do manual de onboarding do ICVS, com parágrafos limpos e vetores TF-IDF.
+- Certifique-se de que o caminho para o dataset está correto no ficheiro "config.py" (ver abaixo).
+
+Passo 3: Configurar os Caminhos
+- Abra o ficheiro "CLI/Core/config.py".
+- Verifique e ajuste o caminho para o dataset:
+  DATASET_PATH = "C:\\Users\\gonsa\\OneDrive\\Microsoft Teams Chat Files\\Desktop\\chatbot\\etapa_i\\icvs_dataset.csv"
+  - Substitua pelo caminho absoluto no seu computador se for diferente.
+- O modelo está definido como "llama3.2:3b". Se quiser alterar, edite MODEL_NAME.
+- Outros parâmetros: TOP_K = 5 (número de trechos recuperados), TEMPERATURE = 0.1 (criatividade da resposta).
+
+Passo 4: Executar o Chatbot
+1. Abra um terminal ou linha de comandos.
+2. Navegue para a pasta "CLI" do projeto:
+   cd "C:\Users\gonsa\OneDrive\Microsoft Teams Chat Files\Desktop\chatbot\CLI"
+   - Ajuste o caminho se necessário.
+3. Execute o chatbot:
+   python fim.py
+4. O chatbot iniciará e mostrará uma mensagem de boas-vindas.
+5. Digite perguntas sobre o ICVS, como "Who should I contact for informtion on safety training?" ou "How can I obtain an ICVS card?".
+6. Para sair, digite "exit".
+
+Notas Importantes:
+- O chatbot usa apenas o contexto do manual fornecido – não inventa informações.
+- Se o modelo não estiver instalado, o Ollama dará erro. Certifique-se de que está a correr em segundo plano (ollama serve).
+- Para questões avançadas, o chatbot pode alucinar ligeiramente; foi otimizado para perguntas diretas.
+- Se encontrar erros, verifique se todas as bibliotecas estão instaladas e os caminhos estão corretos.
+
+Estrutura do Projeto:
+- etapa_i/: Processamento de dados e criação do dataset.
+- etapa_ii/: Extração de conhecimento (JSON com metadados).
+- etapa_iii/: Sistema RAG e testes.
+- CLI/: Interface de linha de comandos (Core/ contém os módulos principais: config.py, retrieval.py, RAG.py, fim.py).
+
+Se tiver problemas, consulte os relatórios em cada etapa para mais detalhes. Boa sorte!
